@@ -1,0 +1,3 @@
+[submodule "mcp-biomodelling-servers"]
+	path = mcp-biomodelling-servers
+	url = https://github.com/marcorusc/mcp-biomodelling-servers.git
