@@ -3,7 +3,92 @@ BioModelAgent=/$PWD filter="*.rb *.rake Rakefile *.rdoc *.R *.sh *.js *.haml *.s
  chats=chats{
   chat
   tnf
-  
+
+  python_workflow
+
+  neko
+
+  mcp
+
+  port_to_scout
+  port_neko
+
+  port_neko2
+  port_neko3
+  port_neko2.analyze
+
+  port_neko.analyze
+  port_neko.analyze2
+  port_neko.analyze.analyze
+  port_neko.timeline
+
+  port_to_scout.example
+
+  python_mcp
+
+  test_mcp
+  test_mcp2
+
+  ontology
+
+  kpi
+ }
+ python=python filter="*.py"{
+  scout_biomodelling=scout_biomodelling {
+   maboss_services=maboss_services {
+    services=services {
+    }
+   }
+   maboss_tools=maboss_tools {
+   }
+   neko_services=neko_services {
+    __pycache__=__pycache__ {
+    }
+   }
+   neko_src=neko_src {
+    __pycache__=__pycache__ {
+    }
+   }
+   neko_tools=neko_tools {
+   }
+   physicell_services=physicell_services {
+    services=services {
+    }
+   }
+   physicell_tools=physicell_tools {
+   }
+  }
+  tasks=tasks{
+   add_nodes.py
+   analyze_connectivity.py
+   analyze_gene_set.py
+   apply_global_connection.py
+   bridge_components.py
+   complete_connection.py
+   connect_targeted_nodes.py
+   create_seed_network.py
+   export_biomass_handoff.py
+   export_neko_handoff.py
+   export_network.py
+   filter_interactions.py
+   find_paths.py
+   get_references.py
+   hello_world.py
+   list_genes_and_interactions.py
+   network_status.py
+   preview_connection_impact.py
+   probe_exec_context.py
+   probe_neko_import.py
+   probe_path_return.py
+   remove_bimodal_interactions.py
+   remove_gene.py
+   remove_interaction.py
+   remove_undefined_interactions.py
+  }
+ }
+ share=share{
+  tasks=tasks{
+  }
  }
  bin=bin filter="*"{
  }
@@ -15,3 +100,5 @@ BioModelAgent=/$PWD filter="*.rb *.rake Rakefile *.rdoc *.R *.sh *.js *.haml *.s
  data=data filter="*"{
  }
 }
+
+

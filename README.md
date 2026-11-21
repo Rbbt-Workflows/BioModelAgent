@@ -94,6 +94,3 @@ investigation and per-task design decisions are recorded in
 MCP-tool disposition tables (what was ported, split, collapsed, dropped,
 deferred) live in `doc/developer/TaskInventory.md`.
 
-## License
-
-GPL-2.0 (see `LICENSE`).
