@@ -248,8 +248,12 @@ def parse_initial_state(probabilities):
                     "A single-node probability list must be exactly "
                     "[P(OFF), P(ON)]."
                 )
-            return [_initial_probability(value, state=index)
-                    for index, value in enumerate(values)]
+            normalized = [_initial_probability(value, state=index)
+                          for index, value in enumerate(values)]
+            # MCP normalization.py requires the sum check for this form too.
+            if abs(sum(normalized) - 1.0) > 1e-9:
+                raise ValueError("Initial-state probabilities must sum to 1.")
+            return normalized
         records = []
         for entry in values:
             if not isinstance(entry, dict) or set(entry) != {
