@@ -278,7 +278,10 @@ The end-to-end story: build a network with NeKo, curate it into a Boolean
 model, configure it, and simulate + plot + mutate it with MaBoSS — every hop a
 real Scout job (`job(...).run(true)`, `clean: true` recompute), each input the
 previous job's returned path. Seeds `TP53,MDM2,MYC,AKT1`, `max_len=2`,
-`only_signed=false`, `consensus=false` (OmniPath cache warm).
+`only_signed=false`, `consensus=false` (OmniPath cache warm).`only_signed=false`, `consensus=false` (OmniPath cache warm). The runner
+script is committed at
+`test/BioModelAgent/demo/run_maboss_cross_family_demo.rb`; `ruby` it to
+reproduce this table.
 
 | # | Task | Key inputs | Lines/Bytes | sha256 |
 | --- | --- | --- | --- | --- |
