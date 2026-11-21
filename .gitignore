@@ -3,7 +3,8 @@ pkg
 .save
 .crap
 .cache
+__pycache__/
 chats/
 pypath_log/
 var/
-
+tmp/
