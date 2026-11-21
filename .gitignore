@@ -2,3 +2,8 @@ pkg
 .source
 .save
 .crap
+.cache
+chats/
+pypath_log/
+var/
+

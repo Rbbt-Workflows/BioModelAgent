@@ -1,3 +1,6 @@
 [submodule "mcp-biomodelling-servers"]
 	path = mcp-biomodelling-servers
 	url = https://github.com/marcorusc/mcp-biomodelling-servers.git
+[submodule "agentic_system_for_modelling"]
+	path = agentic_system_for_modelling
+	url = https://github.com/marcorusc/agentic_system_for_modelling
