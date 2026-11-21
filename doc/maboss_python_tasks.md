@@ -73,7 +73,7 @@ with ordinary tsv tasks.
 | `get_maboss_logical_rules` | port | `maboss_get_logical_rules` | bundle → tsv |
 | `get_maboss_mutations` | port | `maboss_get_mutations` | bundle → tsv |
 | `update_maboss_parameters` (inspect half) | port | `maboss_get_parameters` | bundle → tsv |
-| `update_maboss_parameters` (update half) | port | `maboss_update_parameters` | bundle + params → bundle |
+| `update_maboss_parameters` (update half) | port | `maboss_update_parameters` | bundle + params → bundle; empty params → tsv (dual, MCP-faithful) |
 | `change_maboss_rule` | port | `maboss_change_rule` | bundle + node + rule → bundle |
 | `set_maboss_output_nodes` | port | `maboss_set_output_nodes` | bundle + nodes → bundle |
 | `set_maboss_initial_state` | port | `maboss_set_initial_state` | bundle + nodes + probs → bundle |
@@ -96,11 +96,17 @@ Deviations from the tentative mapping in the plan (all logged here):
 
 1. **`update_maboss_parameters` split into two tasks** — the MCP tool's
    no-arguments behavior is an inspect-only report, which returns a *TSV*,
-   not a bundle. A single task whose return type depends on the inputs breaks
-   the scout extension contract, so the inspect half became
-   `maboss_get_parameters` (bundle → tsv) and the update half stayed
-   `maboss_update_parameters` (bundle + parameters → bundle, no
-   inspect-only mode).
+   not a bundle. A dedicated inspect task `maboss_get_parameters`
+   (bundle → tsv) was extracted so the report exists in the registered
+   inventory. The update half stayed `maboss_update_parameters`, which also
+   **retains the MCP's dual behavior for fidelity**: empty/absent
+   `parameters` → inspect-only TSV report (`maboss_parameters.tsv`), any
+   value → a new bundle (covered by
+   `test_maboss_tier2.py::test_update_parameters_empty_inspects`). The
+   honest consequence: that task's return type genuinely varies with the
+   `parameters` input — bundle (`.bnd`) versus TSV — and its `Extension:`
+   line records the bundle case; consumers relying on a stable extension
+   should call `maboss_get_parameters` instead.
 2. **`change_maboss_rule` validates with `sim.check()`** exactly like the
    spec (revert-on-invalid with the previous rule restored), rather than
    round-tripping through a reload. Same guarantee, one engine call.

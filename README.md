@@ -51,7 +51,7 @@ Two operational consequences:
   define; without `file:` loading the workflow fails with `NoMethodError`.
   All 17 registrations in `workflow.rb` pass
   `file: File.expand_path('python/tasks/<name>.py', __dir__)`.
-- **OmniPath downloads on first use**: `neko` pulls the interaction resource- **scout-rig 0.2.6 runs python task bodies inside an `atexit` handler.**
+- **scout-rig 0.2.6 runs python task bodies inside an `atexit` handler.**
   CPython 3.12 has already torn down `sys.modules` when that body runs, so a
   *first-time* `import maboss` inside a task function dies with
   `AttributeError: 'NoneType' object has no attribute 'thread_count'`
@@ -155,8 +155,6 @@ Details:
   in-memory copy and report the edge-count delta. Never writes a SIF.
 
 Shared helper module (registers no task): `python/tasks/neko_common.py`
-(`load_network`, `write_sif`, `files_dir`, `artifact_path`, `read_sif_rows`,
-`write_tsv`, `write_md`, `capture_stdout`).Shared helper module (registers no task): `python/tasks/neko_common.py`
 (`load_network`, `write_sif`, `files_dir`, `artifact_path`, `read_sif_rows`,
 `write_tsv`, `write_md`, `capture_stdout`).
 
@@ -267,9 +265,6 @@ record or an unsandboxed probe, not plain `cat`.
 **Seed-choice note:** the demo initially used `max_len=1`, which produced a
 degenerate 1-edge network for these four seeds; `max_len=2` yields a
 27-edge network. Pick seeds/max_len to suit; isolated seeds (genes with no
-interaction at all) never appear in a SIF, since SIF carries only edges.**Seed-choice note:** the demo initially used `max_len=1`, which produced a
-degenerate 1-edge network for these four seeds; `max_len=2` yields a
-27-edge network. Pick seeds/max_len to suit; isolated seeds (genes with no
 interaction at all) never appear in a SIF, since SIF carries only edges.
 
 ## Cross-family chaining demo: NeKo SIF → MaBoSS simulation (11 hops)
@@ -278,7 +273,7 @@ The end-to-end story: build a network with NeKo, curate it into a Boolean
 model, configure it, and simulate + plot + mutate it with MaBoSS — every hop a
 real Scout job (`job(...).run(true)`, `clean: true` recompute), each input the
 previous job's returned path. Seeds `TP53,MDM2,MYC,AKT1`, `max_len=2`,
-`only_signed=false`, `consensus=false` (OmniPath cache warm).`only_signed=false`, `consensus=false` (OmniPath cache warm). The runner
+`only_signed=false`, `consensus=false` (OmniPath cache warm). The runner
 script is committed at
 `test/BioModelAgent/demo/run_maboss_cross_family_demo.rb`; `ruby` it to
 reproduce this table.
@@ -464,7 +459,7 @@ registered NeKo tools, not all prompts/resources/helpers; syntax/metadata
 checks do not prove external data availability or scientific validity; SIF
 carries interactions, not all NeKo state (isolated seeds absent); an empty
 edge export still creates a file. MCP options for database selection are
-exposed per task (`database`), while MCP session options are not.exposed per task (`database`), while MCP session options are not.
+exposed per task (`database`), while MCP session options are not.
 
 **MaBoSS-side notes:** `maboss` 0.8.16 is driven in-process through pyMaBoSS's
 `sim.run()`, which shells out to the cmaboss engine; the MCP server's session
@@ -485,7 +480,6 @@ SCC-based cycle removal would be new functionality, not a port.
   reference; the running copy is the pymaboss site-packages one, diffed
   source-identical); SIF export: `nekomata_packages/neko/_outputs/exports.py`.
 - MCP registrations checked: `mcp-biomodelling-servers/NeKo/server.py`,
-  `NeKo/tools/analysis.py`, `NeKo/tools/history.py`.- MCP registrations checked: `mcp-biomodelling-servers/NeKo/server.py`,
   `NeKo/tools/analysis.py`, `NeKo/tools/history.py`;
   `mcp-biomodelling-servers/MaBoSS/server.py` (24 tools — the MaBoSS
   specification) and `MaBoSS/services/*.py` (initial-state normalization

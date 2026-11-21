@@ -146,11 +146,14 @@ Consequences: bundle-returning tasks use `Extension: bnd` in the docstring so
 scout-rig records a non-empty extension for the result (the directory path
 itself has no suffix). Consumers always accept the directory as a
 `pathlib.Path` and resolve `model.bnd`/`model.cfg` via
-`maboss_common.load_bundle()`.Consequences: bundle-returning tasks use `Extension: bnd` in the docstring so
-scout-rig records a non-empty extension for the result (the directory path
-itself has no suffix). Consumers always accept the directory as a
-`pathlib.Path` and resolve `model.bnd`/`model.cfg` via
-`maboss_common.load_bundle()`.
+`maboss_common.load_bundle()`.`maboss_common.load_bundle()`.
+
+One deliberate exception to a single, stable extension:
+`maboss_update_parameters` keeps the MCP's dual behavior — an empty
+`parameters` argument returns the inspect-only TSV
+(`maboss_parameters.tsv`) instead of a bundle — so its return type varies
+with that input while its `Extension: bnd` line describes the bundle case
+(the dedicated, always-TSV inspector is `maboss_get_parameters`).
 
 ## Live-chain evidence (plan Step 6, work order B)
 
