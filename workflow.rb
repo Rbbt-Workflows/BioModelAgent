@@ -35,4 +35,24 @@ BioModelAgent.python_task :neko_analyze_gene_set, file: File.expand_path('python
 BioModelAgent.python_task :neko_preview_connection_impact, file: File.expand_path('python/tasks/neko_preview_connection_impact.py', __dir__)
 
 BioModelAgent.extend LiveWorkflow
+# MaBoSS tasks (design note: doc/maboss_python_tasks.md). Same explicit file:
+# convention as the NeKo registrations above. The bundle convention (BND+CFG
+# directory) is decided in doc/maboss_investigation.md (P5).
+
+BioModelAgent.python_task :neko_export_bnet, file: File.expand_path('python/tasks/neko_export_bnet.py', __dir__)
+BioModelAgent.python_task :maboss_bnet_to_bnd_cfg, file: File.expand_path('python/tasks/maboss_bnet_to_bnd_cfg.py', __dir__)
+BioModelAgent.python_task :maboss_list_nodes, file: File.expand_path('python/tasks/maboss_list_nodes.py', __dir__)
+BioModelAgent.python_task :maboss_get_initial_state, file: File.expand_path('python/tasks/maboss_get_initial_state.py', __dir__)
+BioModelAgent.python_task :maboss_get_logical_rules, file: File.expand_path('python/tasks/maboss_get_logical_rules.py', __dir__)
+BioModelAgent.python_task :maboss_get_mutations, file: File.expand_path('python/tasks/maboss_get_mutations.py', __dir__)
+BioModelAgent.python_task :maboss_get_parameters, file: File.expand_path('python/tasks/maboss_get_parameters.py', __dir__)
+BioModelAgent.python_task :maboss_change_rule, file: File.expand_path('python/tasks/maboss_change_rule.py', __dir__)
+BioModelAgent.python_task :maboss_update_parameters, file: File.expand_path('python/tasks/maboss_update_parameters.py', __dir__)
+BioModelAgent.python_task :maboss_set_output_nodes, file: File.expand_path('python/tasks/maboss_set_output_nodes.py', __dir__)
+BioModelAgent.python_task :maboss_set_initial_state, file: File.expand_path('python/tasks/maboss_set_initial_state.py', __dir__)
+BioModelAgent.python_task :maboss_run_simulation, file: File.expand_path('python/tasks/maboss_run_simulation.py', __dir__)
+BioModelAgent.python_task :maboss_simulate_mutation, file: File.expand_path('python/tasks/maboss_simulate_mutation.py', __dir__)
+BioModelAgent.python_task :maboss_plot_trajectories, file: File.expand_path('python/tasks/maboss_plot_trajectories.py', __dir__)
+BioModelAgent.python_task :maboss_check, file: File.expand_path('python/tasks/maboss_check.py', __dir__)
+
 BioModelAgent.tasks.keys.each{|t| BioModelAgent.export t }

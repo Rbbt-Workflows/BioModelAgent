@@ -1,0 +1,9 @@
+P1 OK: maboss=maboss file=/home/mvazque2/software/micromamba/envs/pymaboss/lib/python3.12/site-packages/maboss/__init__.py
+  bnet fixture: /tmp/p1_uhdpecfh/tiny.bnet
+  bnd bytes: 87; cfg bytes: 368
+  nodes: ['B', 'A', 'C']
+  run() -> Result; _err=0
+  get_last_states_probtraj type=DataFrame shape=(1, 1)
+  columns=['<nil>']
+  tab-separated CSV head:\n    <nil>\n    999.5000	1.0
+========================================================================

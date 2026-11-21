@@ -1,0 +1,5 @@
+P6 OK: backend=Agg
+  png exists=True bytes=22910
+  png magic='89504e470d0a1a0a' (89504e47... = PNG)
+  default-axes png exists=True bytes=21375
+========================================================================

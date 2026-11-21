@@ -1,0 +1,25 @@
+P5 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p5_bundle.py", line 97, in main
+    info_dir = describe("p5_accept_dir")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p5_bundle.py", line 81, in describe
+    raise RuntimeError(result.stderr)
+RuntimeError: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+NameError: name 'p5_accept_dir' is not defined
+========================================================================
+P5 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p5_bundle.py", line 148, in main
+    from neko_common import files_dir  # noqa: F401 - proves import path works
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'neko_common'
+========================================================================
+P5 (a) introspection: pathlib.Path input accepted
+  p5_accept_dir: null
+P5 (b) introspection: JSON manifest input accepted
+  p5_accept_manifest: null
+  (a) dir bundle: members resolved + maboss.load OK nodes=['B', 'A', 'C']
+  (b) manifest bundle: members resolved + maboss.load OK nodes=['B', 'A', 'C']
+========================================================================

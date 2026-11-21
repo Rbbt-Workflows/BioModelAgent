@@ -1,0 +1,64 @@
+P4 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p4_bridge.py", line 29, in main
+    from neko._inputs import Networks
+ModuleNotFoundError: No module named 'neko._inputs'
+========================================================================
+P4 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p4_bridge.py", line 71, in main
+    network = curated_network()
+              ^^^^^^^^^^^^^^^^^
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p4_bridge.py", line 39, in curated_network
+    return Network(nodes=nodes, interactions=interactions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Network.__init__() got an unexpected keyword argument 'nodes'
+========================================================================
+P4 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p4_bridge.py", line 62, in main
+    network = curated_network(tmp_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p4_bridge.py", line 38, in curated_network
+    return Network(sif_file=str(sif))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mvazque2/software/micromamba/envs/pymaboss/lib/python3.12/site-packages/neko/core/network.py", line 130, in __init__
+    self._populate()
+  File "/home/mvazque2/software/micromamba/envs/pymaboss/lib/python3.12/site-packages/neko/core/network.py", line 193, in _populate
+    self._resource_nodes = set(self.resources["source"].dropna())
+                               ~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+========================================================================
+P4 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p4_bridge.py", line 73, in main
+    f"  curated network: nodes={len(network.nodes)} interactions={len(network.interactions)}"
+                                                                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Network' object has no attribute 'interactions'
+========================================================================
+P4 OK (imports)
+  curated network: nodes=3 edges=2
+  export_bnet stdout (2 lines):
+    Created BNet file: /tmp/p4_3r8dlqyo/curated_1.bnet
+    Generated 1 BNet files.
+  produced: ['curated_1.bnet']
+  --- curated_1.bnet:
+    # model in BoolNet format
+    targets, factors
+    B, !(A)
+    C, (B)
+    A, A
+  maboss.load OK; nodes=['A', 'B', 'C']
+  bimodal stdout (7 lines):
+    Warning: The network has 1 BIMODAL interaction(s).
+    Bimodal interactions:
+    A -> B
+    Reference: SIF file
+    Created BNet file: /tmp/p4_3r8dlqyo/bimodal/bimo_1.bnet
+    Created BNet file: /tmp/p4_3r8dlqyo/bimodal/bimo_2.bnet
+    Generated 2 BNet files.
+  bimodal produced 2 files: ['bimo_1.bnet', 'bimo_2.bnet']
+    bimo_1.bnet: ['B, (A)', 'C, (B)', 'A, A']
+    bimo_2.bnet: ['B, !(A)', 'C, (B)', 'A, A']
+  n=1 cap produced 1 files: ['cap_1.bnet']
+========================================================================

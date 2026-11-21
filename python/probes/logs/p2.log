@@ -1,0 +1,44 @@
+P2 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p2_pandas_mutations.py", line 58, in main
+    mut = sim.copy().mutate("A", state).run()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'run'
+========================================================================
+P2 FAILED
+Traceback (most recent call last):
+  File "/bulk/mvazque2/git/workflows/BioModelAgent/python/probes/probe_p2_pandas_mutations.py", line 70, in main
+    lines.append(f"  param sample_time={sim.param['sample_time']} max_time={sim.param['max_time']}")
+                                        ~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'sample_time'
+========================================================================
+P2b param keys:
+  discrete_time = 0.0
+  display_traj = 0.0
+  max_time = 1000.0
+  sample_count = 10000.0
+  seed_pseudorandom = 0.0
+  statdist_cluster_threshold = 1.0
+  statdist_similarity_cache_max_size = 20000.0
+  statdist_traj_count = 0.0
+  thread_count = 1.0
+  time_tick = 0.5
+  use_physrandgen = 0.0
+========================================================================
+P2 OK: pandas=3.0.6
+  WT last probtraj: shape=(1, 2) index_name=None cols=['<nil>', 'A -- B']
+  WT to_csv head:
+    <nil>	A -- B
+    999.5000	0.5046	0.4954
+  get_states_probtraj: type=DataFrame shape=(2000, 8) cols=['<nil>', 'A', 'A -- B', 'A -- B -- C', 'A -- C', 'B']
+  trajectory to_csv head:
+    <nil>	A	A -- B	A -- B -- C	A -- C	B	B -- C	C
+    0.0	0.20589	0.065393	0.204422	0.135916	0.09233	0.092576	0.065836	0.137636
+    0.5	0.324017	0.014502	0.317976	0.119907	0.043062	0.043522	0.014834	0.122179
+    1.0	0.393846	0.00361	0.388079	0.085724	0.017884	0.018368	0.003925	0.088563
+  mutate(A,ON) -> shape=(1, 1) vals=[1.0]
+  mutate(A,OFF) -> shape=(1, 1) vals=[1.0]
+  mutate(A,WT) -> shape=(1, 2) vals=[0.5046, 0.4954]
+  get_mutations: {}
+  param max_time=1000.0 time_tick=0.5 sample_count=10000.0
+========================================================================

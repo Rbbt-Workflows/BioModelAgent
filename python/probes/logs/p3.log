@@ -1,0 +1,36 @@
+P3 OK
+  BND (87 B):
+    node B {
+      logic = A;
+    }
+    
+    node A {
+      logic = B;
+    }
+    
+    node C {
+      logic = (A AND NOT B);
+    }
+  CFG (368 B):
+    time_tick = 0.5;
+    max_time = 1000;
+    sample_count = 10000;
+    discrete_time = 0;
+    use_physrandgen = 0;
+    seed_pseudorandom = 0;
+    display_traj = 0;
+    statdist_traj_count = 0;
+    statdist_cluster_threshold = 1;
+    thread_count = 1;
+    statdist_similarity_cache_max_size = 20000;
+    
+    B.is_internal = 0;
+    A.is_internal = 0;
+    C.is_internal = 0;
+    
+    B.refstate = -1;
+    A.refstate = -1;
+    C.refstate = -1;
+  reload get_logical_rules type=dict
+    {'A': '(!A & B) | (A & B)', 'B': '(!B & A) | (B & A)', 'C': '(!C & (A & !B)) | (C & (A & !B))'}
+========================================================================
