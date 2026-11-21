@@ -84,9 +84,9 @@ with ordinary tsv tasks.
 | `export_maboss_bnd_cfg` | fold (the bundle **is** bnd+cfg) | — | — |
 | `export_maboss_handoff` | defer (cross-server PhysiCell handoff, multi-file) | — | — |
 | `create_session` | drop (session layer) | — | — |
-| `get_session` | drop (session layer) | — | — |
 | `list_sessions` | drop (session layer) | — | — |
-| `clean_sessions` | drop (session layer) | — | — |
+| `list_artifact_sessions` | drop (session layer) | — | — |
+| `set_default_session` | drop (session layer) | — | — |
 | `delete_session` | drop (session layer) | — | — |
 | `list_generated_files` | drop (Scout job `.files` dirs replace artifact dirs) | — | — |
 | `clean_generated_files` | drop (Scout job `.files` dirs replace artifact dirs) | — | — |
