@@ -146,4 +146,32 @@ Consequences: bundle-returning tasks use `Extension: bnd` in the docstring so
 scout-rig records a non-empty extension for the result (the directory path
 itself has no suffix). Consumers always accept the directory as a
 `pathlib.Path` and resolve `model.bnd`/`model.cfg` via
+`maboss_common.load_bundle()`.Consequences: bundle-returning tasks use `Extension: bnd` in the docstring so
+scout-rig records a non-empty extension for the result (the directory path
+itself has no suffix). Consumers always accept the directory as a
+`pathlib.Path` and resolve `model.bnd`/`model.cfg` via
 `maboss_common.load_bundle()`.
+
+## Live-chain evidence (plan Step 6, work order B)
+
+The 11-hop cross-family demo (NeKo SIF → MaBoSS simulation; transcript in
+`README.md` §"Cross-family chaining demo") produced three new findings:
+
+1. **The bridge needs no connectivity help at `max_len=2` on these seeds.**
+   The README's fidelity note warned that `export_bnet` might need
+   `neko_analyze_connectivity`/`neko_bridge_components` first; in practice
+   the network was already fully connected enough for a 12-node `.bnet`
+   (14 lines), so the anticipated curation hops were unnecessary. No
+   bimodal/undefined edges survived hops 2–3 either: both were byte-identical
+   no-ops (sha `fc488dab0170…`) because `only_signed=false,
+   consensus=false` with these seeds already excluded them.
+2. **`probabilities` rejects bare scalars.** A first attempt passed
+   `probabilities='0.5'`; `parse_initial_state` correctly rejected it
+   (`probabilities must be [P(OFF), P(ON)], a state->probability mapping, or
+   a list of {'state': [...], 'probability': p} records`). The accepted
+   string spellings are two numbers as JSON (`'[0.5, 0.5]'`), a JSON mapping,
+   or JSON records. Documented in the README details.
+3. **Bundle hops cost ~2 s each** (load + print + save of a 4-node model),
+   dominated by the cmaboss engine start-up inside `sim.run()`; the
+   conversion hop (`maboss_bnet_to_bnd_cfg`) is the only MaBoSS hop that
+   shells out at all. Nothing pathological to act on.
